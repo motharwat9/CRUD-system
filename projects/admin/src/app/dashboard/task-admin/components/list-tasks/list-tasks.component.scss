@@ -1,0 +1,49 @@
+.addTask {
+   background-color: #00264D;
+   border-radius: 10px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 5px 23px;
+   font-size: 20px;
+}
+// input:focus {
+//    border: 1px solid #18e809 !important;
+// }
+// th {
+//    text-align: center;
+//    padding: 10px ;
+// }
+td {
+   text-align: center;
+   padding: 10px;
+   border-bottom: 1px solid rgb(232, 232, 232);
+   button {
+      border: none;
+      outline: none;
+      background-color: #a0c6ec;
+      margin-right: 5px;
+      border-radius: 15px;
+      opacity: 0.7;
+      &:hover {
+         opacity: 1;
+      }
+   }
+}
+table {
+   border: 1px solid rgb(232, 232, 232);
+
+}
+.header {
+   background-color: #00264D;
+   color: white;
+}
+.tt {
+   background:linear-gradient(to right, #48858d,#9eeef8) ;
+
+}
+@media (max-width:500px){
+   td {
+      font-size: 10px;
+   }
+}

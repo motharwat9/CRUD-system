@@ -30,6 +30,10 @@
               "projects/user/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "projects/user/src/styles.scss"
             ],
             "scripts": []
@@ -93,6 +97,10 @@
               "projects/user/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "projects/user/src/styles.scss"
             ],
             "scripts": []
@@ -127,6 +135,10 @@
               "projects/admin/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "projects/admin/src/styles.scss"
             ],
             "scripts": []
@@ -153,7 +165,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin/src/environments/environment.ts",
+                  "with": "projects/admin/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -190,6 +208,10 @@
               "projects/admin/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "projects/admin/src/styles.scss"
             ],
             "scripts": []
