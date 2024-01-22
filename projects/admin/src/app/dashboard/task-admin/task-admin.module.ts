@@ -7,12 +7,14 @@ import { MaterialModule } from '../../material/material.module';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 @NgModule({
   declarations: [
     ListTasksComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,

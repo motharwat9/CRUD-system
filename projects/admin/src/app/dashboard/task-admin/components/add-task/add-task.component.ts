@@ -4,9 +4,10 @@ import { TaskAdminService } from '../../services/task-admin.service';
 import * as moment from 'moment';
 import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Tasks } from 'projects/admin/src/app/veiwModel/tasks';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-add-task',
@@ -15,6 +16,7 @@ import { Tasks } from 'projects/admin/src/app/veiwModel/tasks';
 })
 export class AddTaskComponent implements OnInit {
   formTask!:FormGroup;
+  formValues:any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:Tasks,
@@ -22,7 +24,8 @@ export class AddTaskComponent implements OnInit {
     private serves: TaskAdminService,
     private spinner:NgxSpinnerService,
     private toaster:ToastrService,
-    public dialog:MatDialogRef<AddTaskComponent>
+    public dialog:MatDialogRef<AddTaskComponent>,
+    public matDialog:MatDialog
     ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,11 @@ export class AddTaskComponent implements OnInit {
       deadline:[this.data ? new Date(this.data?.deadline.split('-').reverse().join('-')).toISOString() : '',[Validators.required]],
       description:[this.data?.description || '',[Validators.required]],
     })
+    this.formValues=this.formTask.value
+
+    console.log(this.formTask.value)
+    console.log(this.formTask)
+    console.log(this.formValues)
   }
   get fc(){
     return this.formTask.controls
@@ -78,5 +86,22 @@ export class AddTaskComponent implements OnInit {
       }
     })
     return formData;
+  }
+  close(){
+    let hasChanges:boolean = false;
+    Object.keys(this.formValues).forEach((item)=>{
+      if(this.formValues[item] !== this.formTask.value[item])
+        hasChanges =true
+    })
+    if(hasChanges){
+      const dialogRef = this.matDialog.open(ConfirmationComponent, {
+        width:'500px',  
+      });
+    
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }else {
+      this.dialog.close()
+    }
   }
 }
