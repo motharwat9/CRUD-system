@@ -15,6 +15,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListTasksComponent implements OnInit{
   tasks:Tasks[]=[]
+  page:number = 1
+  total!:number
+  filtes:any ={
+    page:this.page,
+    limit:10
+  }
+
   constructor(
       public dialog: MatDialog,
       private service:TaskAdminService,
@@ -25,12 +32,14 @@ export class ListTasksComponent implements OnInit{
   ngOnInit(): void {
     this.loodAllTasks()
   }
+
   loodAllTasks(){
     this.spinner.show()
-    return this.service.getAllTasks().subscribe(( res :any)=>{
-      console.log(res.tasks)
+    return this.service.getAllTasks(this.filtes).subscribe(( res :any)=>{
+      console.log(res)
       this.prepereTasks(res.tasks)
       this.spinner.hide()
+      this.total=res.totalItems
     },error=>{
       this.toaster.error('error',error.error.message)
       this.spinner.hide()
@@ -85,5 +94,10 @@ export class ListTasksComponent implements OnInit{
         if(result)
           this.loodAllTasks()
       });
+  }
+  pageChanged(event:any){
+    this.page =event
+    this.filtes['page'] = event
+    this.loodAllTasks()
   }
 }

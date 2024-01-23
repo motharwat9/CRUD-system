@@ -5,9 +5,10 @@ import { TaskAdminRoutingModule } from './task-admin-routing.module';
 import { ListTasksComponent } from './components/list-tasks/list-tasks.component';
 import { MaterialModule } from '../../material/material.module';
 import { AddTaskComponent } from './components/add-task/add-task.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     TaskAdminRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    FormsModule
   ]
 })
 export class TaskAdminModule { }

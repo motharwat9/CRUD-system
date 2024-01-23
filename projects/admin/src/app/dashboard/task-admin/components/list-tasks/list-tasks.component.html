@@ -5,41 +5,41 @@
    <form action="" class="row mt-3">
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
-             <mat-label>Search</mat-label>
-             <input matInput  placeholder="title search">
+               <mat-label>Search</mat-label>
+               <input matInput  placeholder="title search" >
          </mat-form-field>
-     </div>  
+      </div>  
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>By User</mat-label>
             <mat-select >
-                <mat-option >
+               <mat-option >
                   mohamed tharwat
-                </mat-option>
+               </mat-option>
             </mat-select>
-        </mat-form-field>
-     </div>  
+         </mat-form-field>
+      </div>  
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Status</mat-label>
             <mat-select>
-                <mat-option>
+               <mat-option>
                   admin
-                </mat-option>
-              </mat-select>
+               </mat-option>
+            </mat-select>
          </mat-form-field>
       </div> 
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Start date">
-              <input matEndDate placeholder="End date">
+               <input matStartDate placeholder="Start date">
+               <input matEndDate placeholder="End date">
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-     </div>  
+         </mat-form-field>
+      </div>  
    </form>
    <div class="table-responsive">
       <table class="table">
@@ -51,8 +51,11 @@
             <td >Status</td>
             <td >Action</td>
          </tr>
-         <tr *ngFor="let item of tasks;let i = index">
-            <td>{{i + 1}}</td>
+         <tr *ngFor="let item of tasks| paginate: { id: 'tasks',
+         itemsPerPage: 10,
+         currentPage: page,
+         totalItems: total } ">
+            <td></td>
             <td>{{item.title}}</td>
             <td>{{item.username}}</td>
             <td>{{item.deadline}}</td>
@@ -60,5 +63,12 @@
             <td><button (click)=" updateTsak(item)"><i class="fa-solid fa-pen"></i></button> <button (click)="deleteTask(item.id)"><i class="fa-solid fa-trash"></i></button></td>
          </tr>
       </table>
+   </div>
+   <div class="d-flex justify-content-center align-items-center mt-3">
+      <pagination-controls   class="my-pagination"
+         (pageChange)="pageChanged($event)" id="tasks"
+         previousLabel="Prev"
+         nextLabel="Next">
+      </pagination-controls>
    </div>
 </div>

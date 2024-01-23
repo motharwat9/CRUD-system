@@ -47,3 +47,17 @@ table {
       font-size: 10px;
    }
 }
+
+
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+   background: #10202b !important;
+   border-radius: 15px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover, .ngx-pagination button:hover {
+   background: #8accf3;
+   border-radius: 15px;
+}
+
+

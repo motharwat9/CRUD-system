@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CoreModule } from './core/core.module';
     }),
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     MaterialModule,
-    CoreModule
+    CoreModule,
+    NgxPaginationModule
 
   ],
   providers: [],
