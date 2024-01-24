@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskAdminService } from '../../services/task-admin.service';
 import { Tasks } from 'projects/admin/src/app/veiwModel/tasks';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -25,7 +24,6 @@ export class ListTasksComponent implements OnInit{
   constructor(
       public dialog: MatDialog,
       private service:TaskAdminService,
-      private spinner:NgxSpinnerService,
       private toaster:ToastrService
     ) {}
 
@@ -34,15 +32,10 @@ export class ListTasksComponent implements OnInit{
   }
 
   loodAllTasks(){
-    this.spinner.show()
     return this.service.getAllTasks(this.filtes).subscribe(( res :any)=>{
       console.log(res)
       this.prepereTasks(res.tasks)
-      this.spinner.hide()
       this.total=res.totalItems
-    },error=>{
-      this.toaster.error('error',error.error.message)
-      this.spinner.hide()
     })
   }
   prepereTasks(tasks:any){
@@ -73,14 +66,9 @@ export class ListTasksComponent implements OnInit{
     });
   }
   deleteTask(id:string){
-    this.spinner.show()
     this.service.deleteTask(id).subscribe(res=>{
       this.loodAllTasks()
-      this.spinner.hide()
       this.toaster.success('success','the task was deleted')
-    },error=>{
-      this.toaster.error('error',error.error.message)
-      this.spinner.hide()
     })
   }
   updateTsak(item:any) {

@@ -2,10 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskAdminService } from '../../services/task-admin.service';
 import * as moment from 'moment';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Tasks } from 'projects/admin/src/app/veiwModel/tasks';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
@@ -22,7 +20,6 @@ export class AddTaskComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:Tasks,
     private formBuilder: FormBuilder,
     private serves: TaskAdminService,
-    private spinner:NgxSpinnerService,
     private toaster:ToastrService,
     public dialog:MatDialogRef<AddTaskComponent>,
     public matDialog:MatDialog
@@ -49,27 +46,17 @@ export class AddTaskComponent implements OnInit {
     return this.formTask.controls
   }
   create(){
-    this.spinner.show()
     let formData = this.prepereForm()
     this.serves.createTask(formData).subscribe(res=>{
-      this.spinner.hide()
       this.toaster.success('Task Created Successfuly','success');
       this.dialog.close(true)
-    },error=>{
-      this.spinner.hide()
-      this.toaster.error(error.error.message)
     })
   }
   update(){
-    this.spinner.show()
     let formData = this.prepereForm()
     this.serves.updateTask(formData,this.data.id).subscribe(res=>{
-      this.spinner.hide()
       this.toaster.success('Task Updated Successfuly','success');
       this.dialog.close(true)
-    },error=>{
-      this.spinner.hide()
-      this.toaster.error(error.error.message)
     })
   }
   selectImage(event:any){

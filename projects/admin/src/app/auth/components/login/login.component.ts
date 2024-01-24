@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit{
       private fb:FormBuilder ,
       private authService:AuthService, 
       private router:Router,
-      private toaster:ToastrService,
-      private spinner: NgxSpinnerService) {}
+      private toster:ToastrService
+      ) {}
   ngOnInit(): void {
     this.createLoginForm();
   }
@@ -31,17 +31,11 @@ export class LoginComponent implements OnInit{
     })
   }
   submit(){
-    this.spinner.show()
     let model=this.loginForm.value
     this.authService.loginUser(model).subscribe((res:any)=>{
-      this.spinner.hide()
-      this.toaster.success('success','Login Success')
-      this.router.navigate(['tasks'])
-      console.log(res.token)
       localStorage.setItem('token',res.token)
-    },error=>{
-      this.toaster.error('error',error.error.message)
-      this.spinner.hide()
+      this.toster.success("success","Login Success");
+      this.router.navigate(['tasks'])
     })
   }
 }
