@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
 
-  constructor(private router:Router){}
+  constructor(
+    private router:Router
+    ) {}
   
-  logout(){
+  logout(): void {
     localStorage.clear();
     this.router.navigate(['/login']);
   }

@@ -6,15 +6,18 @@
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
                <mat-label>Search</mat-label>
-               <input matInput  placeholder="title search" >
+               <input matInput  placeholder="title search" (keyup)="searchByTitle($event)">
          </mat-form-field>
       </div>  
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>By User</mat-label>
-            <mat-select >
-               <mat-option >
-                  mohamed tharwat
+            <mat-select (valueChange)="serachByUser($event)">
+               <mat-option>
+                  None
+               </mat-option >
+               <mat-option *ngFor="let user of users" [value]="user.id" >
+                  {{user.name}}
                </mat-option>
             </mat-select>
          </mat-form-field>
@@ -22,9 +25,15 @@
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Status</mat-label>
-            <mat-select>
-               <mat-option>
-                  admin
+            <mat-select (valueChange)="serachByStatus($event)">
+               <mat-option value="">
+                  All
+               </mat-option>
+               <mat-option value="Complete">
+                  complete
+               </mat-option>
+               <mat-option value="In-Progress">
+                  In-Progress
                </mat-option>
             </mat-select>
          </mat-form-field>
@@ -33,8 +42,8 @@
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-               <input matStartDate placeholder="Start date">
-               <input matEndDate placeholder="End date">
+               <input matStartDate placeholder="Start date"  (dateChange)="searchByDate($event,'fromDate')">
+               <input matEndDate placeholder="End date" (dateChange)="searchByDate($event,'toDate')">
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
@@ -51,11 +60,11 @@
             <td >Status</td>
             <td >Action</td>
          </tr>
-         <tr *ngFor="let item of tasks| paginate: { id: 'tasks',
+         <tr *ngFor="let item of tasks | paginate: { id: 'tasks',
          itemsPerPage: 10,
          currentPage: page,
-         totalItems: total } ">
-            <td></td>
+         totalItems: total }">
+            <td><img [src]="'https://crud-ybsz.onrender.com/'+item.image" alt=""></td>
             <td>{{item.title}}</td>
             <td>{{item.username}}</td>
             <td>{{item.deadline}}</td>

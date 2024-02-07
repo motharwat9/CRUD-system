@@ -15,7 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     ListTasksComponent,
     AddTaskComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
   ],
   imports: [
     CommonModule,

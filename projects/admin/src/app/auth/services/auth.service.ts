@@ -1,16 +1,20 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Login } from '../../interfaces/login';
+import { Login } from '../../veiwModel/login';
 import { environment } from 'projects/admin/src/environments/environment.development';
-import { catchError, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { LoginModel } from '../../interfaces/login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  constructor(private http:HttpClient) { }
-  loginUser(model:Login) {
-    return this.http.post(`${environment.APIURL}/auth/login`,model)
+  constructor(
+    private http:HttpClient,
+  ) {}
+
+  loginUser(model:Login) :Observable<LoginModel>{
+    return this.http.post<LoginModel>(`${environment.APIURL}/auth/login`,model)
   }
 }

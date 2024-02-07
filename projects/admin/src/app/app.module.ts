@@ -18,8 +18,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     BrowserAnimationsModule,
+    MaterialModule,
+    CoreModule,
+    AuthModule,
     ToastrModule.forRoot({
       preventDuplicates:true,
       timeOut:2000,
@@ -27,8 +29,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
       easeTime:1000
     }),
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    MaterialModule,
-    CoreModule,
     NgxPaginationModule
 
   ],

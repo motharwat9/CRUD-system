@@ -1,0 +1,41 @@
+<div class="mt-4">
+   <form action="" class="row mt-3">
+      <div class="col-md-3">
+         <mat-form-field appearance="outline" class="w-100">
+               <mat-label>Search</mat-label>
+               <input matInput  placeholder="title search" (keyup)="searchByTitle($event)">
+         </mat-form-field>
+      </div>
+   </form>
+   <div class="table-responsive">
+      <table class="table">
+         <tr class="header">
+            <td >No.</td>
+            <td >Name</td>
+            <td >Email</td>
+            <td >Tasks Assigned</td>
+            <td >Action</td>
+         </tr>
+         <tr *ngFor="let user of users | paginate: { id: 'users',
+         itemsPerPage: 8,
+         currentPage: page,
+         totalItems: total } ;let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.assignedTasks}}</td>
+            <td>
+               <button (click)="deleteUser(user,i)">Delate</button>
+               <button (click)="changeStatus(user,i)">{{user.status === 'Active'?'In-Active':'Active'}}</button>
+            </td>
+         </tr>
+      </table>
+   </div>
+   <div class="d-flex justify-content-center align-items-center mt-3">
+      <pagination-controls   class="my-pagination"
+         (pageChange)="pageChanged($event)" id="users"
+         previousLabel="Prev"
+         nextLabel="Next">
+      </pagination-controls>
+   </div>
+</div>

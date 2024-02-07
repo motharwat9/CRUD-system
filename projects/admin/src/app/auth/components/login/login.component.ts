@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { LoginModel } from '../../../interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -16,26 +16,30 @@ export class LoginComponent implements OnInit{
 
   constructor(
       private fb:FormBuilder ,
-      private authService:AuthService, 
+      private authService:AuthService,  
+      private toster:ToastrService,
       private router:Router,
-      private toster:ToastrService
-      ) {}
+    ) {}
+
   ngOnInit(): void {
     this.createLoginForm();
   }
-  createLoginForm(){
+
+  createLoginForm(): void{
     this.loginForm =this.fb.group({
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required]],
       role:['admin']
     })
   }
-  submit(){
-    let model=this.loginForm.value
-    this.authService.loginUser(model).subscribe((res:any)=>{
-      localStorage.setItem('token',res.token)
+
+  submit(): void{
+    const model=this.loginForm.value;
+
+    this.authService.loginUser(model).subscribe((res:LoginModel)=>{
+      localStorage.setItem('token',res.token);
       this.toster.success("success","Login Success");
-      this.router.navigate(['tasks'])
-    })
+      this.router.navigate(['']);
+    });
   }
 }

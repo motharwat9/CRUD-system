@@ -7,14 +7,16 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent {
+
   constructor(
     public dialog:MatDialogRef<ConfirmationComponent>,
     public matDialog:MatDialog
   ) {}
-  confirm(){
+  
+  confirm(): void {
     this.matDialog.closeAll()
   }
-  close(){
+  close(): void {
     this.dialog.close()
   }
 }

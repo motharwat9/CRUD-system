@@ -11,12 +11,20 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
 
-  constructor(private spinner:NgxSpinnerService) {}
+  counter: number = 0;
+
+  constructor(
+    private spinner:NgxSpinnerService
+    ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.spinner.show()
+    this.counter++;
+    this.spinner.show();
     return next.handle(request).pipe( finalize(()=>{
-      this.spinner.hide()
+      this.counter--;
+      if (this.counter == 0) {
+        this.spinner.hide();
+      }
     }));
   }
 }

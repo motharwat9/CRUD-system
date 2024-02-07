@@ -1,0 +1,56 @@
+<div class="parent-container-form">
+   <form class="col-lg-6 col-md-8 col-sm-10 col-11" [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+      <div class="form-header">
+         <i class="fa-regular fa-user"></i>
+      </div>
+      <div class="container-form-group">
+         <label for="">User Name </label>
+         <div class="form-group"  [class.form-inValid]="fc['username'].invalid && fc['username'].touched" [class.form-valid]="fc['username'].valid ">
+            <div class="icon">
+               <i class="fa-solid fa-user"></i>
+            </div>
+            <input type="text" class="form-input"  formControlName="username" >
+         </div>
+         <small *ngIf="fc['username'].errors?.['required'] && fc['username'].touched">Name is reqired</small>
+         <small *ngIf="fc['username'].errors?.['pattern'] && fc['username'].touched">Name must larger than 3 letters and not include numbers</small>
+      </div>
+      <div class="container-form-group">
+         <label for="">Email </label>
+         <div class="form-group" [class.form-inValid]="fc['email'].invalid && fc['email'].touched" [class.form-valid]="fc['email'].valid ">
+            <div class="icon">
+               <i class="fa-solid fa-envelope"></i>
+            </div>
+            <input type="email" class="form-input"  formControlName="email">
+         </div>
+         <small *ngIf="fc['email'].errors?.['required'] && fc['email'].touched">Email is reqired</small>
+         <small *ngIf="fc['email'].errors?.['email'] && fc['email'].touched">not valid email ex:aa@aa.com</small>
+      </div>
+      <div class="container-form-group">
+         <label for="">Password</label>
+         <div class="form-group" [class.form-inValid]="fc['password'].invalid && fc['password'].touched" [class.form-valid]="fc['password'].valid ">
+            <div class="icon">
+               <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" class="form-input"   formControlName="password">
+         </div>
+         <small *ngIf="fc['password'].errors?.['required'] && fc['password'].touched">Password is reqired</small>
+         <small *ngIf="fc['password'].errors?.['minlength'] && fc['password'].touched">Password must larger than 6</small>
+      </div>
+      <div class="container-form-group">
+         <label for="">Confirm Password</label>
+         <div class="form-group" [class.form-inValid]="fc['confirmPassword'].invalid && fc['confirmPassword'].touched || registerForm.errors?.['UnmatchedPassword']" [class.form-valid]="fc['confirmPassword'].valid && !registerForm.errors?.['UnmatchedPassword']">
+            <div class="icon">
+               <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" class="form-input" formControlName="confirmPassword">
+         </div>
+         <small *ngIf="fc['confirmPassword'].errors?.['required'] && fc['confirmPassword'].touched">Confirm Password is reqired</small>
+         <small *ngIf="registerForm.errors?.['UnmatchedPassword'] && fc['confirmPassword'].touched">Confirm Password not Match Password</small>
+
+      </div>
+      <div class="form-footer">
+         <button class="login-button" [disabled]="registerForm.invalid"  >Register</button>
+         <div class="mt-2 text-center" ><a  class="text-primary" routerLink="" routerLinkActive="active">Have an account</a></div>
+      </div>
+   </form>
+</div>

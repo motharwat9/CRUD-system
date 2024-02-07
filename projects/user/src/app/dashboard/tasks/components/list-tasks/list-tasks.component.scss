@@ -1,0 +1,18 @@
+.container-card {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   grid-gap: 1rem;   
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+   background: #10202b !important;
+   border-radius: 15px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover, .ngx-pagination button:hover {
+   background: #8accf3;
+   border-radius: 15px;
+}
+img {
+   width:100%;
+   height: 180px;
+}

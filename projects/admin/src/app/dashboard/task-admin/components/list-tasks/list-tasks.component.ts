@@ -1,9 +1,14 @@
+import { Users } from '../../../../interfaces/users';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskAdminService } from '../../services/task-admin.service';
-import { Tasks } from 'projects/admin/src/app/veiwModel/tasks';
+import { Task } from 'projects/admin/src/app/veiwModel/tasks';
 import { ToastrService } from 'ngx-toastr';
+import { FilterTasks } from 'projects/admin/src/app/interfaces/filter-tasks';
+import * as moment from 'moment';
+import { UsersService } from '../../../manage-users/services/users.service';
+import { VeiwUsers } from 'projects/admin/src/app/veiwModel/veiw-users';
 
 
 
@@ -13,33 +18,37 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list-tasks.component.scss']
 })
 export class ListTasksComponent implements OnInit{
-  tasks:Tasks[]=[]
-  page:number = 1
-  total!:number
-  filtes:any ={
+
+  tasks:Task[]=[];
+  page: number = 1;
+  total!: number;
+  timeOutId: any;
+  users: VeiwUsers[] = [];
+  filtes: FilterTasks = {
     page:this.page,
-    limit:10
+    limit:10,
   }
 
   constructor(
       public dialog: MatDialog,
       private service:TaskAdminService,
-      private toaster:ToastrService
+      private toaster:ToastrService,
+      private userService:UsersService
     ) {}
 
   ngOnInit(): void {
-    this.loodAllTasks()
+    this.loodAllTasks();
+    this.getUsers();
+    this.storeSubject()
   }
-
-  loodAllTasks(){
+  loodAllTasks() {
     return this.service.getAllTasks(this.filtes).subscribe(( res :any)=>{
-      console.log(res)
-      this.prepereTasks(res.tasks)
-      this.total=res.totalItems
+      this.prepereTasks(res.tasks);
+      this.total = res.totalItems;
     })
   }
-  prepereTasks(tasks:any){
-    this.tasks=tasks.map((item:any)=>{
+  prepereTasks(tasks: Task[]){
+    this.tasks=tasks.map((item: any)=>{
       return{
         id:item._id,
         title:item.title,
@@ -52,12 +61,11 @@ export class ListTasksComponent implements OnInit{
       }
     })
     this.tasks.reverse()
-    console.log(this.tasks)
   }
-
   openDialog(): void {
     const dialogRef = this.dialog.open(AddTaskComponent, {
     width:'750px',    
+    disableClose:true,
   });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -65,17 +73,17 @@ export class ListTasksComponent implements OnInit{
         this.loodAllTasks()
     });
   }
-  deleteTask(id:string){
+  deleteTask(id: string) {
     this.service.deleteTask(id).subscribe(res=>{
-      this.loodAllTasks()
-      this.toaster.success('success','the task was deleted')
+      this.loodAllTasks();
+      this.toaster.success('success','the task was deleted');
     })
   }
-  updateTsak(item:any) {
-    console.log(item)
+  updateTsak(item: any) {
     const dialogRef = this.dialog.open(AddTaskComponent, {
       width:'50rem',  
-      data:item  
+      data:item,
+      disableClose:true
     });
   
       dialogRef.afterClosed().subscribe(result => {
@@ -83,9 +91,64 @@ export class ListTasksComponent implements OnInit{
           this.loodAllTasks()
       });
   }
-  pageChanged(event:any){
+  searchByTitle(event: any) {
+    this.filtes['keyword'] = event.target.value;
+    this.page = 1;
+    this.filtes['page'] = 1;
+    clearTimeout(this.timeOutId);
+    this.timeOutId = setTimeout(() => {
+      this.loodAllTasks();
+    }, 2000);
+  }
+  serachByUser(event: any) {
+    this.filtes['userId'] = event;
+    this.page = 1;
+    this.filtes['page'] = 1;
+    this.loodAllTasks();
+  }
+  serachByStatus(event: any) {
+    this.filtes['status'] = event;
+    this.page = 1;
+    this.filtes['page'] = 1;
+    this.loodAllTasks();
+  }
+  searchByDate(event: any , type: string) {
+    this.page = 1;
+    this.filtes['page'] = 1;
+    let newDate=moment(event.value).format('DD-MM-YYYY');
+    if (type === 'toDate' || type === 'fromDate')
+    this.filtes[type]= newDate
+    if (type == 'toDate' && this.filtes['toDate'] !== 'Invalid date') {
+      this.loodAllTasks()
+    }
+    if (this.filtes['toDate'] === 'Invalid date' && this.filtes['fromDate'] === 'Invalid date')
+    {
+      this.filtes['toDate'] = '';
+      this.filtes['fromDate'] = '';
+      this.loodAllTasks()
+    }
+  }
+  pageChanged(event: any) {
     this.page =event
     this.filtes['page'] = event
     this.loodAllTasks()
+  }
+  getUsers() {
+    this.userService.loadAllUsers();
+  }
+  storeSubject() {
+    this.userService.getObservable().subscribe((res: any)=>{
+      this.users=this.prepereUsers(res.data);
+      this.total = res.totalItems;
+    })
+  }
+  prepereUsers(users: Users[]) {
+    let newUsers = users?.map((user)=> {
+      return {
+        name:user.username,
+        id:user._id
+      }
+    })
+    return newUsers
   }
 }

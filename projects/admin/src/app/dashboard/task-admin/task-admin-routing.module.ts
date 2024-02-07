@@ -4,7 +4,8 @@ import { ListTasksComponent } from './components/list-tasks/list-tasks.component
 import { AddTaskComponent } from './components/add-task/add-task.component';
 
 const routes: Routes = [
-  {path:'',component:ListTasksComponent},
+  {path:'',redirectTo:'tasks',pathMatch:'full'},
+  {path:'tasks',component:ListTasksComponent},
   // {path:'',component:AddTaskComponent}
 ];
 

@@ -1,5 +1,5 @@
 export const environment = {
-   production: true,
+   production: false,
    APIURL:"https://crud-ybsz.onrender.com"
    
 };

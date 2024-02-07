@@ -38,9 +38,16 @@ table {
    background-color: #00264D;
    color: white;
 }
-.tt {
-   background:linear-gradient(to right, #48858d,#9eeef8) ;
+// .tt {
+//    background:linear-gradient(to right, #48858d,#9eeef8) ;
 
+// }
+img {
+   width: 70px;
+   height: 70px;
+   padding: 2px;
+   border-radius: 100%;
+   object-fit: cover;
 }
 @media (max-width:500px){
    td {

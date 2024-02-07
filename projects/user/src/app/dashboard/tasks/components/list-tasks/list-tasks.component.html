@@ -1,0 +1,41 @@
+<form action="" class="row mt-3">
+   <div class="col-md-3">
+      <mat-form-field appearance="outline" class="w-100">
+         <mat-label>Status</mat-label>
+         <mat-select (valueChange)="serachByStatus($event)"  [(value)]="selectedStatus">
+            <mat-option value="Complete">
+               complete
+            </mat-option>
+            <mat-option value="In-Progress" >
+               In-Progress
+            </mat-option>
+         </mat-select>
+      </mat-form-field>
+   </div> 
+</form>
+<div class="mt-4 container-card">
+   <ng-container *ngFor="let item of tasks | paginate: { id: 'item',
+   itemsPerPage: 10,
+   currentPage: page,
+   totalItems: total }">
+      <div class="card text-start">
+         <div class="card-body">
+            <img [src]="'https://crud-ybsz.onrender.com/'+item.image" alt="" class="image">
+            <h2 class="card-title">{{item.title}}</h2>
+            <p class="card-text text-muted  ">Dead-Line Date:{{item.deadline}}</p>
+            <p class="card-subtitle">{{item.description}}</p>
+         </div>
+         <div class="card-footer">
+            <button class="btn btn-danger ms-2" routerLink="Task/Details/{{item._id}}">Details</button>
+            <button class="btn btn-primary ms-2" (click)="completedTask(item)">Complete</button>
+         </div>
+      </div>
+   </ng-container>
+</div>
+<div class="d-flex justify-content-center align-items-center mt-3">
+<pagination-controls class="my-pagination" 
+(pageChange)="change($event)" 
+id="item"
+previousLabel="Prev"
+nextLabel="Next"></pagination-controls>
+</div>
