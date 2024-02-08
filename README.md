@@ -37,29 +37,34 @@ This project has the following requirements:
 
 - FrontEnd parts
 
+1. Clone the repository: [frontEnd Repo](https://github.com/motharwat9/CRUD-system)
+2. install node_modules and install package
+
+## Configuration
+
+1. Access the application at http://localhost:4200 in your web browser
+2. Log in with administrator credentials.
+3. Navigate to the Admin panel for user and task management.
+
 ## Features
 
 - **Responsive Design:** The portfolio is designed to work seamlessly across various devices and screen sizes, ensuring a great user experience on desktops, tablets, and smartphones.
-- **Project Showcase:** Browse through my showcased projects with detailed descriptions, images, and links to live demos or repositories.
 - **Skills Highlight:** Discover the frontend technologies and skills I specialize in, including HTML, CSS, JavaScript, Angular, and Bootstrap.
-- **Contact Information:** Easily find my contact details to get in touch for collaboration or job opportunities.
 
 ## Technologies Used
 
 - [Angular](https://angular.io) - Frontend framework for building web applications
 - [Bootstrap](https://getbootstrap.com) - For responsive design and UI components
-- [Remixicon](https://remixicon.com) - For icons
-# Students Dashboard
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
-
-## Demo
-
-[Dashboard Linkedin.webm](https://github.com/ahmedelayk/Student-Dashboard/assets/50213964/9dbe4ea5-3880-4846-9d19-9fbe6f114d00)
+- [Angulae Material](https://material.angular.io/) - For responsive design and UI components
+- [Node js](https://nodejs.org/en) - Create BakeEnd 
+- HTML
+- sass
+- Typescript 
 
 
 ## Youtube Video for demo
-Here is the [Video]
+
+
 ## JSON-Server
 
 Run `json-server db.json --watch` it will serving your JSON data on `http://localhost:3000` (or the specified port).
