@@ -18,8 +18,24 @@ This project has the following requirements:
 - IDE [Visual Studio Code](https://code.visualstudio.com/)
 - [Node js](https://nodejs.org/en)
 - Angular CLI
-   to install angular cli write common
+  > to install angular cli write common
   > npm install -g @angular/cli
+
+## Installation
+
+- BackEnd part
+  
+1. Clone the repository: [backEnd Repo](https://github.com/motharwat9/CRUD-BackEnd)
+2. create file .env and write
+   > PORT=8080
+   > JWT_SECRET=tasksapi
+   > MONGO_URL='mongodb+srv://username:password@cluster0.7bw3bxl.mongodb.net/?retryWrites=true&w=majority'
+3. create Acount in mongoDB [mongoDB](https://cloud.mongodb.com/) and create project and Data base
+   and change username-password
+4. push this repo to github
+5. deploy to website ex Render [Render](https://render.com/)
+
+- FrontEnd parts
 
 ## Features
 
