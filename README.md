@@ -59,7 +59,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 ## Youtube Video for demo
-Here is the [Video](https://youtu.be/fpN78FWQJZ0)
+Here is the [Video]
 ## JSON-Server
 
 Run `json-server db.json --watch` it will serving your JSON data on `http://localhost:3000` (or the specified port).
