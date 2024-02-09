@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container mt-5">
    <div class="imageBox">
        <img [src]="'https://crud-ybsz.onrender.com/'+task.image" class="w-100">
    </div>
    <div class="d-flex justify-content-between align-items-baseline my-3">
        <h1 class="card-title ">{{task.title}}</h1>
-       <button class="btn btn-primary ms-2" (click)="completedTask()">Complete</button>
+       <button class="btn btn-primary ms-2" [disabled]="task.status == 'Complete'" (click)="completedTask()">Complete</button>
       </div>
    <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{task.deadline}}</p>
    <hr>
    <p class="card-text">{{task.description}}</p>
 </div>
 <div class="text-center mt-2">
-<button class="btn btn-primary ms-2" (click)="goBack()">Go Back</button>
+<button class="btn btn-primary ms-2"  (click)="goBack()">Go Back</button>
 </div>

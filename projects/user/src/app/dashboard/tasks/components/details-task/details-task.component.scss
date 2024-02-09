@@ -1,7 +1,8 @@
 .imageBox {
    height: 250px;
    img {
-   height: 250px;
+   height: 100%;
+   object-fit: contain;
 
    }
 }

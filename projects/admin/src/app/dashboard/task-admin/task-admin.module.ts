@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DashboardModule } from '../dashboard.module';
 
 
 @NgModule({
@@ -16,6 +17,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ListTasksComponent,
     AddTaskComponent,
     ConfirmationComponent,
+
+
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    DashboardModule
   ]
 })
 export class TaskAdminModule { }

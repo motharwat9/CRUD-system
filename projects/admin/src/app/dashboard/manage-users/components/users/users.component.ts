@@ -25,6 +25,7 @@ export class UsersComponent implements OnInit{
   ngOnInit(): void {
     this.getUsers();
     this.storeSubject();
+    console.log(this.users)
   }
 
   getUsers(): void {

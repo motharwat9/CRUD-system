@@ -17,7 +17,7 @@ export class ListTasksComponent implements OnInit {
   selectedStatus: string = "In-Progress";
   dataUser!: DataUser;
   tasks: Task[] = [];
-
+  erro:string=''
 
   constructor(
     private service :TaskService,
@@ -41,6 +41,10 @@ export class ListTasksComponent implements OnInit {
     this.service.getAllTasks(this.dataUser.userId,params).subscribe((res:any)=>{
       this.tasks = res.tasks;
       this.total = res.totalItems;
+    },(error)=>{
+      this.erro = error;
+      console.log(this.erro)
+      
     })
   }
   change(event: any) {
@@ -48,6 +52,7 @@ export class ListTasksComponent implements OnInit {
     this.getAllTasks();
   }
   completedTask(ele: any) {
+    console.log(ele)
     let model = {
       id: ele._id
     };

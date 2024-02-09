@@ -10,6 +10,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DashboardModule } from './dashboard/dashboard.module';
+// import { TaskAdminModule } from './dashboard/task-admin/task-admin.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
       easeTime:1000
     }),
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    NgxPaginationModule
+    NgxPaginationModule,
+    // TaskAdminModule
 
   ],
   providers: [],

@@ -4,6 +4,7 @@ import { UsersComponent } from './components/users/users.component';
 import { ManageUserRoutingModule } from './manage-user-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaterialModule } from '../../material/material.module';
+import { DashboardModule } from '../dashboard.module';
 
 
 
@@ -15,7 +16,8 @@ import { MaterialModule } from '../../material/material.module';
     CommonModule,
     ManageUserRoutingModule,
     NgxPaginationModule,
-    MaterialModule
+    MaterialModule,
+    DashboardModule
 
   ]
 })
