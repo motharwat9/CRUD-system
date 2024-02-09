@@ -65,10 +65,6 @@ This project has the following requirements:
 ## Youtube Video for demo
 
 
-## JSON-Server
-
-Run `json-server db.json --watch` it will serving your JSON data on `http://localhost:3000` (or the specified port).
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
