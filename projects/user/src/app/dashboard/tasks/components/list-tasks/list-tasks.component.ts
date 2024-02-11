@@ -17,7 +17,6 @@ export class ListTasksComponent implements OnInit {
   selectedStatus: string = "In-Progress";
   dataUser!: DataUser;
   tasks: Task[] = [];
-  erro:string=''
 
   constructor(
     private service :TaskService,
@@ -42,9 +41,12 @@ export class ListTasksComponent implements OnInit {
       this.tasks = res.tasks;
       this.total = res.totalItems;
     },(error)=>{
-      this.erro = error;
-      console.log(this.erro)
-      
+      let tasks = this.tasks.filter(tasks=>{
+        tasks.status == 'Complete'
+      })
+      if(tasks.length == 0){
+        this.tasks = []
+      }
     })
   }
   change(event: any) {
