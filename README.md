@@ -66,7 +66,7 @@ This project has the following requirements:
 
 ## Demo
 
-[CRUDS Linkedin.webm]()
+[CRUDS Linkedin.webm](https://www.linkedin.com/posts/mohamed-tharwat-8823611b5_excited-to-announce-the-completion-of-my-activity-7162578661806665728-tf-d?utm_source=share&utm_medium=member_desktop)
 
 ## Youtube Video for demo
 
