@@ -23,10 +23,12 @@ export class ListTasksComponent implements OnInit{
   page: number = 1;
   total!: number;
   timeOutId: any;
+  selectedStatus: string = "In-Progress";
   users: VeiwUsers[] = [];
   filtes: FilterTasks = {
     page:this.page,
     limit:10,
+    status:this.selectedStatus
   }
 
   constructor(
@@ -107,6 +109,7 @@ export class ListTasksComponent implements OnInit{
     this.loodAllTasks();
   }
   serachByStatus(event: any) {
+    this.selectedStatus = event;
     this.filtes['status'] = event;
     this.page = 1;
     this.filtes['page'] = 1;

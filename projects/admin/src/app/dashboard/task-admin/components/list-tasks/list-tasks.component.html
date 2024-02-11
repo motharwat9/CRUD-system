@@ -1,7 +1,5 @@
-<div class="d-flex justify-content-end mt-4">
+<div class="d-flex  align-items-end flex-column mt-4">
    <button class="addTask" (click)="openDialog()">Add Task</button>
-</div>
-<div class="mt-4" *ngIf="tasks.length >= 1">
    <form action="" class="row mt-3">
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
@@ -25,7 +23,7 @@
       <div class="col-md-3">
          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Status</mat-label>
-            <mat-select (valueChange)="serachByStatus($event)">
+            <mat-select (valueChange)="serachByStatus($event)" [(value)]="selectedStatus" >
                <mat-option value="">
                   All
                </mat-option>
@@ -50,6 +48,8 @@
          </mat-form-field>
       </div>  
    </form>
+</div>
+<div class="mt-4" *ngIf="tasks.length >= 1">
    <div class="table-responsive">
       <table class="table">
          <tr class="header">
@@ -69,7 +69,7 @@
             <td>{{item.username}}</td>
             <td>{{item.deadline}}</td>
             <td>{{item.status}}</td>
-            <td><button (click)=" updateTsak(item)"><i class="fa-solid fa-pen"></i></button> <button (click)="deleteTask(item.id)"><i class="fa-solid fa-trash"></i></button></td>
+            <td><button [disabled]="item.status == 'Complete'" (click)=" updateTsak(item)"><i class="fa-solid fa-pen"></i></button> <button [disabled]="item.status == 'Complete'" (click)="deleteTask(item.id)"><i class="fa-solid fa-trash"></i></button></td>
          </tr>
       </table>
    </div>

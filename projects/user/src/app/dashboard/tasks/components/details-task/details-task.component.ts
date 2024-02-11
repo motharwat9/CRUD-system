@@ -36,7 +36,7 @@ export class DetailsTaskComponent implements OnInit {
       id:this.taskId
     };
     this.service.completeTask(model).subscribe(res=>{
-      this.router.navigate(['/tasks']);
+      this.router.navigate(['/AllTasks']);
       this.toster.success('Task Complete Successfuly','success');
     })
   }

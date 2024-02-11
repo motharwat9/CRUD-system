@@ -23,9 +23,8 @@ export class HandelErrorsInterceptor implements HttpInterceptor {
       if (error.status === 0) {
         // A client-side or network error occurred. Handle it accordingly.
         this.toster.error('Network error', 'Please check your internet connection.');
-      } else if (error.status === 500) {
-        this.toster.error('Server error', 'An unexpected error occurred. Please try again later.');
-
+      } else if (error.status === 500 || error.status === 400) {
+        this.toster.error(error.error.message,'error');
         if (error.error.message =='jwt expired' || error.error.message == 'jwt must provided' || error.error.message == 'jwt malformed') 
           this.router.navigate(['/login']);
         } else {

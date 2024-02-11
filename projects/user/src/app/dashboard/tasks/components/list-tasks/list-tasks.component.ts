@@ -57,7 +57,12 @@ export class ListTasksComponent implements OnInit {
       id: ele._id
     };
     this.service.completeTask(model).subscribe(res=>{
-      this.getAllTasks();
+      if(this.tasks.length == 1){
+        window.location.reload()
+        this.getAllTasks();
+      }else{
+        this.getAllTasks();
+      }
       this.toster.success('Task Complete Successfuly','success');
     });
   }
