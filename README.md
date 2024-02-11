@@ -9,6 +9,7 @@ workspace is a comprehensive CRUD (Create, Read, Update, Delete) system develope
 - [Configuration](configuration)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Demo](#demo)
 - [Youtube Video for demo](#youtube-video-for-demo)
 - [Development server](development-server)
 
@@ -61,11 +62,13 @@ This project has the following requirements:
 - [Node js](https://nodejs.org/en) - Create BakeEnd 
 - HTML
 - sass
-- Typescript 
+- Typescript
+
+## Demo
+
+[CRUDS Linkedin.webm]()
 
 ## Youtube Video for demo
-Here is the [Video](https://youtu.be/KiJ9NPCmxVs)
-Here is the [Video](https://youtu.be/fpN78FWQJZ0)
 
 -video project [CRUDS-Operation](https://youtu.be/KiJ9NPCmxVs)
 
@@ -73,17 +76,10 @@ Here is the [Video](https://youtu.be/fpN78FWQJZ0)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-# Students Dashboard
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
-
-## Demo
-
-[Dashboard Linkedin.webm](https://github.com/ahmedelayk/Student-Dashboard/assets/50213964/9dbe4ea5-3880-4846-9d19-9fbe6f114d00)
 
 
-## Youtube Video for demo
-Here is the [Video](https://youtu.be/fpN78FWQJZ0)
+
+
 
 
 
