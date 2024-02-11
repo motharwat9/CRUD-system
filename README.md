@@ -9,7 +9,6 @@ workspace is a comprehensive CRUD (Create, Read, Update, Delete) system develope
 - [Configuration](configuration)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Youtube Video for demo](#youtube-video-for-demo)
 - [Development server](development-server)
 
 
