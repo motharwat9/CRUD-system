@@ -9,7 +9,6 @@ workspace is a comprehensive CRUD (Create, Read, Update, Delete) system develope
 - [Configuration](configuration)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Demo](#demo)
 - [Youtube Video for demo](#youtube-video-for-demo)
 - [Development server](development-server)
 
@@ -64,9 +63,6 @@ This project has the following requirements:
 - sass
 - Typescript
 
-## Demo
-
-[Dashboard Linkedin.webm](https://github.com/motharwat9/CRUD-system/assets/50213964/9dbe4ea5-3880-4846-9d19-9fbe6f114d00)
 ## Youtube Video for demo
 
 -video project [CRUDS-Operation](https://youtu.be/KiJ9NPCmxVs)
